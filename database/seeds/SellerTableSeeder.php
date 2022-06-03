@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class SellerTableSeeder extends Seeder
 {
@@ -18,21 +19,21 @@ class SellerTableSeeder extends Seeder
             'company_name'=>'Online Park',
             'first_name'=>'Online',
             'last_name'=>'Park',
-            'password'=>bcrypt('seller22'),
+            'password'=>Hash::make("seller123"),
             'image'=>'YsnkP5XCUMe6RZKNUx5tRIvzFOuJD8xPZFjlxPSR.png',
             'remember_token'=>'4OP3vjDScbnij0NmPgWRMy5Igioqywks24yCxR1PRnUSYY8O4XbkVdMoFOSt',
             'mobile'=>'01xxxxxxx',
-            'email' => 'seller@maantheme.com',
+            'email' => 'seller@gmail.com',
             'gender' => '1',
-            'address' => 'Bongshal,Dhaka',
-            'business_address' => 'Bangshal Dhaka',
-            'business_email' => 'onlinepark@gmail.com',
-            'business_mobile' => '01854432212',
+            'address' => 'Gujranwala',
+            'business_address' => 'GhrBazar',
+            'business_email' => 'ghrbazar@gmail.com',
+            'business_mobile' => '03',
             'post_code' => '1000',
             'city' => 'Dhaka',
             'nid_no' => NULL,
             'passport_no' => NULL,
-            'domain_name' => 'http://mybazarupdate.maantheme.com/',
+            'domain_name' => 'http://mybazarupdate.ghrbazar.com/',
             'domain_ssl_stat' => '0',
             'is_active'=>1,
             'is_approve' => 1,

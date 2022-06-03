@@ -55,12 +55,6 @@
                     </div>
                     <button type="submit" class="btn login-btn">{{__('Login')}}</button>
                 </form>
-                <div class="button-group ">
-                    <a href="{{url('/admin')}}" class="btn login-btn" >{{__('Super Admin')}}</a>
-                    <a href="{{url('/admin')}}" class="btn login-btn" >{{__('Admin')}}</a>
-                    <a href="#" class="btn login-btn" onclick="fillup('seller@maantheme.com','seller22')">{{__('Seller')}}</a>
-                    <a href="{{url('/login')}}" class="btn login-btn">{{__('Customer')}}</a>
-                </div>
                 <div class="login-footer">
                     <a href="{{ route('seller.password.request') }}">
                         <span><img src="{{URL::to('/backend')}}/img/icons/lock1.svg" alt=""></span>{{__('Forgot Password?')}}</a>

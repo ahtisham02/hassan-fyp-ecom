@@ -71,54 +71,54 @@
                                 </li>
                             @endif
                             @if(auth()->user()->can('browse_pending_orders') || auth()->user()->hasRole('super-admin'))
-                                <li><a class="@if(Request::is('seller/pending_orders'))active @endif"
+                                {{--  <li><a class="@if(Request::is('seller/pending_orders'))active @endif"
                                        href="{{route('seller.pending_orders')}}">
                                         {{ __('Pending') }}
                                     </a>
-                                </li>
+                                </li>  --}}
                             @endif
                             @if(auth()->user()->can('browse_confirmed_orders') || auth()->user()->hasRole('super-admin'))
-                                <li>
+                                {{--  <li>
                                     <a class="@if(Request::is('seller/confirmed_orders'))active @endif"
                                        href="{{route('seller.confirmed_orders')}}">
                                         {{ __('Confirmed') }}
                                     </a>
-                                </li>
+                                </li>  --}}
                             @endif
                             @if(auth()->user()->can('browse_processing_orders') || auth()->user()->hasRole('super-admin'))
-                                <li>
+                                {{--  <li>
                                     <a class="@if(Request::is('seller/processing_orders'))active @endif"
                                        href="{{route('seller.processing_orders')}}">
                                         {{ __('Processing') }}
                                     </a>
-                                </li>
+                                </li>  --}}
                             @endif
                             @if(auth()->user()->can('browse_picked_orders') || auth()->user()->hasRole('super-admin'))
-                                <li>
+                                {{--  <li>
                                     <a class="@if(Request::is('seller/picked_orders'))active @endif"
                                        href="{{route('seller.picked_orders')}}">
                                         {{ __('Picked')}}
                                     </a>
-                                </li>
+                                </li>  --}}
                             @endif
                             @if(auth()->user()->can('browse_shipped_orders') || auth()->user()->hasRole('super-admin'))
-                                <li><a class="@if(Request::is('seller/shipped_orders'))active @endif"
+                                {{--  <li><a class="@if(Request::is('seller/shipped_orders'))active @endif"
                                        href="{{route('seller.shipped_orders')}}">
                                         {{ __('Shipped') }}
                                     </a>
-                                </li>
+                                </li>  --}}
                             @endif
                             @if(auth()->user()->can('browse_delivered_orders') || auth()->user()->hasRole('super-admin'))
-                                <li><a class="@if(Request::is('seller/delivered_orders'))active @endif"
+                                {{--  <li><a class="@if(Request::is('seller/delivered_orders'))active @endif"
                                        href="{{route('seller.delivered_orders')}}">
                                         {{ __('Delivered') }} </a>
-                                </li>
+                                </li>  --}}
                             @endif
                             @if(auth()->user()->can('browse_cancelled_orders') || auth()->user()->hasRole('super-admin'))
-                                <li><a class="@if(Request::is('seller/cancelled_orders'))active @endif"
+                                {{--  <li><a class="@if(Request::is('seller/cancelled_orders'))active @endif"
                                        href="{{route('seller.cancelled_orders')}}">
                                         {{ __('Cancelled') }} </a>
-                                </li>
+                                </li>  --}}
                             @endif
                         </ul>
                     </li>

@@ -15,6 +15,7 @@
                         <div class="container">
                             <div class="card-group">
                                 @foreach($payment_gateways as $key => $payment_gateway )
+                                    @if($payment_gateway->name != "Razorpay")
                                     <div class="card">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ucfirst($payment_gateway->name)}}</h5>
@@ -66,6 +67,7 @@
                                             </form>
                                         </div>
                                     </div>
+                                    @endif
                                 @endforeach
                             </div>
                         </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminsTableSeeder extends Seeder
 {
@@ -15,9 +16,9 @@ class AdminsTableSeeder extends Seeder
         DB::table('admins')->insert([
             'id'=>1,
             'name'=>'super-admin',
-            'email'=>'superadmin@maantheme.com',
+            'email'=>'superadmin@gmail.com',
             'phone'=>'01xxxxxxx',
-            'password'=>bcrypt('superadmin22'),
+            'password'=>Hash::make("admin123"),
             'avatar'=>'index.jpeg',
             'remember_token'=>'4OP3vjDScbnij0NmPgWRMy5Igioqywks24yCxR1PRnUSYY8O4XbkVdMoFOSt',
             'is_active'=>1,
@@ -28,9 +29,9 @@ class AdminsTableSeeder extends Seeder
         DB::table('admins')->insert([
             'id' => 2,
             'name'=>'Admin',
-            'email'=>'admin@maantheme.com',
+            'email'=>'admin@gmail.com',
             'phone'=>'01xxxxxxx',
-            'password'=>bcrypt('admin22'),
+            'password'=>Hash::make("admin123"),
             'avatar'=>'index.jpeg',
             'remember_token'=>'4OP3vjDScbnij0NmPgWRMy5Igioqywks24yCxR1PRnUSYY8O4XbkVdMoFOSt',
             'is_active'=>1,
