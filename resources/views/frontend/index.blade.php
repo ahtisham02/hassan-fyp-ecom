@@ -22,6 +22,6 @@
 
     @include('frontend._brand-logo')
 
-    @include('frontend._popup')
+    {{--  @include('frontend._popup')  --}}
 
 @stop

@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: SSE
- * Date: 2/24/2019
- * Time: 3:17 PM
- */
+
 
 namespace App\Http\Traits;
 

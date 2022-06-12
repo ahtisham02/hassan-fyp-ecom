@@ -214,7 +214,7 @@
             @if (Module::has('PromotionManagement') && Module::find('PromotionManagement')->isEnabled())
                 @if (auth()->user()->can('browse_promotion_management') ||
                     auth()->user()->hasRole('super-admin'))
-                    {{--  <li class="@if (Request::is('admin/promotional_products', 'admin/promotional_products/*')) active @endif">
+                    <li class="@if (Request::is('admin/promotional_products', 'admin/promotional_products/*')) active @endif">
                         <a href="#">
                             <span class="icon">
                                 <svg viewBox="0 0 22 25" xmlns="http://www.w3.org/2000/svg">
@@ -257,7 +257,7 @@
                             @endif
                         </ul>
                         <!-- Sub Manu End -->
-                    </li>  --}}
+                    </li>
                 @endif
             @endif
 
@@ -472,7 +472,7 @@
                     </a>
                     <!-- Sub Manu Start -->
                     <ul>
-                        {{--  <li>
+                        <li>
                             <a class="@if (Request::is('admin/stock_report')) active @endif"
                                 href="{{ route('backend.stock_report') }}">{{ __('Product (Stock balance)') }}
                             </a>
@@ -486,7 +486,7 @@
                             <a class="@if (Request::is('admin/seller_report')) active @endif"
                                 href="{{ route('backend.seller_report') }}">{{ __('Seller info') }}
                             </a>
-                        </li>  --}}
+                        </li>
                     </ul>
                     <!-- Sub Manu End -->
                 </li>

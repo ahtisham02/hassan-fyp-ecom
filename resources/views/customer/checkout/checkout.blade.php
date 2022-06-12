@@ -243,12 +243,12 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="right-form">
-                            <h4>{{ __('Promotional Code') }}</h4>
+                            {{--  <h4>{{ __('Promotional Code') }}</h4>
                             <p>{{ __('Have a coupon? (Will be available in next version.)') }}</p>
                             <div class="right-search input-group">
                                 <input type="text" placeholder="Enter your coupon code" disabled>
                                 <button class="btn-anime" disabled>{{ __('Apply Coupon') }}</button>
-                            </div>
+                            </div>  --}}
                             <div class="order-cart">
                                 <h4>{{ __('Your Order') }}</h4>
                                 <ul>
@@ -265,18 +265,18 @@
                             </div>
                             <div class="payment-cart">
                                 @if(gatewayOn('stripe'))
-                                    {{--  <div class="input-group payment-option">
+                                    <div class="input-group payment-option">
                                         <input type="radio" name="paymentOption" id="DirectBankTransferCheck" value="1" {{ old('paymentOption') == 1 ? 'checked' : '' }}>
                                         <label for="DirectBankTransferCheck">{{ __('Credit Card') }}</label>
                                         <p>{{ __('Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.') }}</p>
-                                    </div>  --}}
+                                    </div>
                                 @endif
                                 @if(gatewayOn('paypal'))
-                                    {{--  <div class="input-group payment-option">
+                                    <div class="input-group payment-option">
                                         <input type="radio" name="paymentOption" id="paypalCheck" value="3" {{ old('paymentOption') == 3 ? 'checked' : '' }}>
                                         <label for="paypalCheck">{{ __('Paypal') }}</label>
                                         <p>{{ __('Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order won’t be shipped until the funds have cleared in our account.') }}</p>
-                                    </div>  --}}
+                                    </div>
                                 @endif
                                     {{--  <div class="input-group payment-option">
                                         <input type="radio" name="paymentOption" id="razorpayCheck" value="2" {{ old('paymentOption') == 2 ? 'checked' : '' }}>
