@@ -43,20 +43,9 @@
 
                             <li>
                                 <div class="dropdown currency-manu">
-                                    <button class="dropdown-toggle" type="button" id="dropdownCurrency" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class="flag" id="cur-symbol">{{ userCurrency('symbol') }}</span>
-                                        <span class="flag-title" id="cur-title">{{ userCurrency('name') }}</span>
-                                    </button>
-                                    <ul class="dropdown-menu" aria-labelledby="dropdownCurrency">
-                                        @foreach(currencies() as $currency)
-                                        <li>
-                                            <a href="javascript:changeCurrency({{$currency->id}})">
-                                                <span class="">{{ $currency->symbol }}&nbsp;</span>
-                                                <span class="flag-title">{{ $currency->name }}</span>
-                                            </a>
-                                        </li>
-                                        @endforeach
-                                    </ul>
+                                        {{--  <span class="flag" id="cur-symbol">{{ userCurrency('symbol') }}</span>  --}}
+                                        <span class="flag-title" id="cur-title">{{ userCurrency('name') }} ({{ userCurrency('symbol') }})</span>
+
                                 </div>
                             </li>
                         @endif

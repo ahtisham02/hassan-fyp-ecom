@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Frontend\Brand;
-use App\Models\Frontend\Category;
-use App\Models\Frontend\Color;
-use App\Models\Frontend\Currency;
-use App\Models\Frontend\EmailSubscriber;
-use App\Models\Frontend\Menu;
-use App\Models\Frontend\Product;
-use App\Models\Frontend\Banner;
-use App\Models\Frontend\ProductReview;
-use App\Models\Frontend\Promotion;
-use App\Models\Frontend\Seller;
-use App\Models\Frontend\Size;
-use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\Frontend\Menu;
+use App\Models\Frontend\Size;
+use Illuminate\Http\Response;
+use App\Models\Frontend\Brand;
+use App\Models\Frontend\Color;
+use App\Models\Frontend\Banner;
+use App\Models\Frontend\Seller;
+use App\Models\Frontend\Product;
+use App\Models\Frontend\Category;
+use App\Models\Frontend\Currency;
+use App\Models\Frontend\Promotion;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
+use App\Models\Frontend\ProductReview;
+// use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Models\Frontend\EmailSubscriber;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Validation\ValidationException;
 
 class FrontController extends Controller
@@ -583,7 +585,6 @@ class FrontController extends Controller
     public function changeCurrency(Request $request)
     {
         $currency = Currency::query()->findOrFail($request->get('id'));
-
         $data = [
             'id' => $request->get('id'),
             'symbol' => $currency->symbol,
@@ -593,7 +594,7 @@ class FrontController extends Controller
         ];
 
         Cookie::queue(Cookie::make('currency',json_encode($data),config('constants.cart_expire_min')));
-
+        // dd($data);
         return response($data);
     }
 

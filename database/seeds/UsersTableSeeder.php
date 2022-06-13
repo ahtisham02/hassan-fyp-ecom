@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -13,9 +14,9 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         $data = [
-            [1, 'Hedley', 'Mckinney', 'Rerum obcaecati aliq', '8801XXXXXXXXX', 'customer@maantheme.com', '202111272206531.jpeg', 'customer', '$2y$10$g7G8NIrAns215xKq46gqm.F211UwngzCoXpWxOrG9UWvW/LtFD1o6', 1, '2000-08-31', 0, 1, 0, '2022-03-22 23:00:00', '708120', '2022-03-22 23:00:00', '2022-03-23 10:35:45', 1, NULL, '2022-03-22 23:00:00', '2022-03-23 10:35:45', NULL],
-            [2, 'Thomas', 'Thomas', '', '66654512132', NULL, NULL, 'Thomas', '$2y$10$xLB54MOKIutVhTaXtrWYy.CEmW1PqFk6proa6kXJwcEV3oq7VJEdu', NULL, NULL, 0, 1, 0, NULL, '', NULL, '2022-03-23 10:44:57', 1, NULL, '2022-03-23 10:25:11', '2022-03-23 10:44:57', NULL],
-            [3, 'James', 'mark', '', '6667845945', NULL, NULL, 'James', '$2y$10$TiFl.BH5rmnxfk3zJRNpL.5k78DQPNVoV7q2S1YBGvDSDyAh/aIAi', NULL, NULL, 0, 1, 0, NULL, '', NULL, NULL, 1, NULL, '2022-03-23 10:49:28', '2022-03-23 10:49:28', NULL],
+            [1, 'Hedley', 'Mckinney', 'Rerum obcaecati aliq', '8801XXXXXXXXX', 'customer@gmail.com', '202111272206531.jpeg', 'customer', 1, '2000-08-31', 0, 1, 0, '2022-03-22 23:00:00', '708120', '2022-03-22 23:00:00', '2022-03-23 10:35:45', 1, NULL, '2022-03-22 23:00:00', '2022-03-23 10:35:45', NULL],
+            [2, 'Thomas', 'Thomas', '', '66654512132', NULL, NULL, 'Thomas', NULL, NULL, 0, 1, 0, NULL, '', NULL, '2022-03-23 10:44:57', 1, NULL, '2022-03-23 10:25:11', '2022-03-23 10:44:57', NULL],
+            [3, 'James', 'mark', '', '6667845945', NULL, NULL, 'James', NULL, NULL, 0, 1, 0, NULL, '', NULL, NULL, 1, NULL, '2022-03-23 10:49:28', '2022-03-23 10:49:28', NULL],
         ];
 
         foreach ($data as $d){
@@ -28,7 +29,7 @@ class UsersTableSeeder extends Seeder
                 'email'=> $d[5],
                 'image'=> $d[6],
                 'username'=> $d[7],
-                'password'=> $d[8],
+                'password'=> Hash::make("customer123"),
                 'gender'=> $d[9],
                 'dob'=> $d[10],
                 'stop_email'=> $d[11],

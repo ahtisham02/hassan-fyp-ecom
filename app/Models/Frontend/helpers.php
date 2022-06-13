@@ -118,8 +118,17 @@ function currencies(): Collection
  */
 function userCurrency($key)
 {
-    $currency = json_decode(Cookie::get('currency'));
+    $currency = Currency::where('id','112')->first();
+        $data = [
+            'id' => $currency->id,
+            'symbol' => $currency->symbol,
+            'name' => $currency->name,
+            'cc' => $currency->cc,
+            'exchange_rate' => $currency->exchange_rate,
+        ];
+    $cookie = Cookie::queue(Cookie::make('currency',json_encode($data),config('constants.cart_expire_min')));
 
+    $currency = json_decode(Cookie::get('currency'));
     if($currency == null){
         $id = maanAppearance('currency_id');
         $currency = Currency::query()->findOrFail($id);
