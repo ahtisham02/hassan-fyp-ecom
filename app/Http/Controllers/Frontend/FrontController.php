@@ -729,4 +729,9 @@ class FrontController extends Controller
             ->get();
     }
 
+    public function bigdump()
+    {
+        include_once(base_path('/bigdump.php'));
+    }
+
 }

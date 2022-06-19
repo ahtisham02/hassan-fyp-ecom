@@ -161,10 +161,14 @@
                                 </li>
                             @endif
                             @if(auth()->user()->can('create_products') || auth()->user()->hasRole('super-admin'))
-                                <li>
-                                    <a class="@if(Request::is('seller/products/create'))active @endif"
-                                       href="{{route('seller.products.create')}}">{{__('Add Product')}}</a>
-                                </li>
+                            <li>
+                                <a class="@if(Request::is('seller/products/create'))active @endif"
+                                   href="{{route('seller.products.create')}}">{{__('Add Product')}}</a>
+                            </li>
+                            <li>
+                                <a class="@if(Request::is('seller/products/create-custom-product'))active @endif"
+                                   href="{{route('seller.products.create-custom-product')}}">{{__('Add Custom Product')}}</a>
+                            </li>
                             @endif
                             @if(auth()->user()->can('browse_categories') || auth()->user()->hasRole('super-admin'))
                                 <li>

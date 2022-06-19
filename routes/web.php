@@ -137,6 +137,18 @@ Route::group(['prefix' => 'seller', 'namespace' => 'Backend', 'as' => 'seller.']
             Route::get('customer_report', 'ReportController@customerReport')->name('customer_report');
             Route::get('customer_report_list', 'ReportController@customerReportList')->name('customer_report.list');
         });
+
+        Route::get('/create-custom-product','\App\Http\Controllers\Backend\CustomProductController@index')->name('products.create-custom-product');
+        Route::post('/search-custom-product','\App\Http\Controllers\GcdBrndController@store')->name('search-custom-product');
+        Route::POST('/pgo','\App\Http\Controllers\PageoController@store')->name('pgo');
+        Route::POST('/raw','\App\Http\Controllers\RawController@store')->name('raw');
+        Route::POST('/slab','\App\Http\Controllers\SlabbedController@store')->name('slab');
+        Route::POST('/pageth','\App\Http\Controllers\PagethController@store')->name('pageth');
+        Route::POST('/pagefo','\App\Http\Controllers\PagefoController@store')->name('pagefo');
+        Route::POST('/pag1/{id}','\App\Http\Controllers\PageoController@show')->name('pag1');
+        Route::POST('/pag1nn/{id}','\App\Http\Controllers\PageoController@create')->name('pag1nn');
+        Route::POST('/pag1sbooks/{id}','\App\Http\Controllers\PageoController@update')->name('pag1sbooks');
+        Route::POST('/test','\App\Http\Controllers\PageoController@edit')->name('test');
     });
 });
 

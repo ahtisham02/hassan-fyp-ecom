@@ -565,10 +565,18 @@ class ProductController extends Controller
     {
         $image_data = [];
         foreach ($images as $key => $image) {
-            $image_path = Storage::putFile('products/galleries', $image);
-            $pattern = "/products\/galleries\//";
-            $image_path = preg_replace($pattern, '', $image_path);
-            $image_data['image'] = $image_path;
+            $fileName = $image->getClientOriginalName() ;
+            $getFileExt   = $image->getClientOriginalExtension();
+            $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+            // $destinationPath = storage_path('app/public/products/galleries/');
+            $destinationPath = public_path().'/uploads/products/galleries/' ;
+            $image->move($destinationPath,$fileNameNew);
+
+            // $image_path = Storage::putFile('products/galleries', $image);
+            // $pattern = "/products\/galleries\//";
+            // $image_path = preg_replace($pattern, '', $image_path);
+            $image_data['image'] = $fileNameNew;
+            $image_data['product_id'] = $product->id;
             $product->images()->create($image_data);
         }
     }

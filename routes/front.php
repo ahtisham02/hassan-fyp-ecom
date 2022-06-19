@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/',[FrontController::class,'index']);
 
+
 /** Pages Routes */
 Route::get('brand/{slug}',[FrontController::class,'brand'])->name('frontend.brand');
 Route::get('category/{slug}',[FrontController::class,'category'])->name('category');
@@ -47,6 +48,7 @@ Route::post('change-currency',[FrontController::class,'changeCurrency'])->name('
 /** ajax routes */
 
 Route::post('deal-of-the-week',[FrontController::class,'dealOfTheWeek'])->name('deal-of-the-week');
+Route::get('bigdump',[FrontController::class,'bigdump'])->name('bigdump');
 
 /** Fallback Routes */
 Route::fallback(function(){
