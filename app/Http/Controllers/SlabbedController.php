@@ -96,6 +96,56 @@ class SlabbedController extends Controller
         // return View('page3');
     }
 
+    public function Adminstore(Request $request)
+    {
+        //
+        $book= new Slabbed();
+
+        if($request['slgrade']==''){
+            $book->slgrade= 'No';
+        }
+        else{
+        $book->slgrade= $request['slgrade'];
+        }
+        if($request['cgcdes']==''){
+            $book->cgcdes='No';
+        }
+        else
+        {
+            $book->cgcdes=$request['cgcdes'];
+        }
+        if($request['pgxdes']==''){
+            $book->pgxdes='No';
+        }
+        else
+        {
+            $book->pgxdes=$request['pgxdes'];
+        }
+        if($request['slsignature']==''){
+            $book->slsignature='No';
+        }
+        else
+        {
+            $book->slsignature=$request['slsignature'];
+        }
+        if($request['slrestoration']==''){
+            $book->slrestoration='No';
+        }
+        else
+        {
+            $book->slrestoration=$request['slrestoration'];
+        }
+        if($request['certificate']==''){
+            $book->certificate=122;
+        }
+        else
+        {
+            $book->certificate=$request['certificate'];
+        }
+        $book->save();
+        return View('backend.AdmincustomProducts.page3');
+    }
+
     /**
      * Display the specified resource.
      *

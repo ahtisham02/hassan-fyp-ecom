@@ -25,12 +25,12 @@ class ProductReviewController extends Controller
     {
         $request['user_id'] = auth('customer')->id();
         $email = auth('customer')->user()->email;
-
+        
         ProductReview::query()->create($request->all());
 
-        if($email){
-            Mail::to($email)->send(new \App\Mail\ProductReview($request->all()));
-        }
+        // if($email){
+        //     Mail::to($email)->send(new \App\Mail\ProductReview($request->all()));
+        // }
 
         return redirect()->back();
     }

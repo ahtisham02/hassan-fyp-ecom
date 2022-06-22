@@ -16,6 +16,7 @@ use App\Models\Frontend\Currency;
 use App\Models\Frontend\Promotion;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\Book;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Frontend\ProductReview;
 // use Illuminate\Support\Facades\Request;
@@ -303,8 +304,16 @@ class FrontController extends Controller
         }
 
         $similarProducts = Product::query()->inRandomOrder()->take(5)->get();
+        $productBookDetail = Book::where('id',$product->sku)->first();
 
-        return view('frontend.pages.product-details',compact('product','rating','similarProducts'));
+        if(!empty($productBookDetail))
+        {
+            return view('frontend.pages.product-details',compact('product','rating','similarProducts','productBookDetail'));
+        }
+        else
+        {
+            return view('frontend.pages.product-details',compact('product','rating','similarProducts'));
+        }
     }
 
     /**

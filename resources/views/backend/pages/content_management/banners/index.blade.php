@@ -7,7 +7,6 @@
     <div class="content-body">
         <div class="container">
             <div class="main-content default-manu">
-            @include('backend.pages.content_management.nav')
             <!-- Tab Manu End  -->
                 <!-- Tab Content Start -->
                 <div class="tab-content default-content" id="nav-tabContent">

@@ -61,6 +61,29 @@ class PagethController extends Controller
         return View('backend.customProducts.page4')->with(compact('categories','brands'));
     }
 
+    public function Adminstore(Request $request)
+    {
+        // dd($request->all(s));
+        // dd(\Session::get('custom_product_id'));
+        $product = Product::findOrFail(\Session::get('custom_product_id'));
+        $image = $request->path;
+        $fileName = $image->getClientOriginalName();
+        $getFileExt   = $image->getClientOriginalExtension();
+        $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+        $destinationPath = public_path().'/uploads/products/galleries/' ;
+        $image->move($destinationPath,$fileNameNew);
+        $image_data['image'] = $fileNameNew;
+        $image_data['product_id'] = $product->id;
+        ProductImage::create($image_data);
+
+        $book= new Pageth();
+        $book->path= $fileNameNew;
+        $book->save();
+        $categories = Category::where('is_active','1')->get();
+        $brands = Brand::where('is_active','1')->get();
+        return View('backend.AdmincustomProducts.page4')->with(compact('categories','brands'));
+    }
+
     /**
      * Display the specified resource.
      *
