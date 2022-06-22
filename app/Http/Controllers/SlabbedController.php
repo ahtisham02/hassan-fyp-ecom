@@ -37,7 +37,7 @@ class SlabbedController extends Controller
     {
         //
         $book= new Slabbed();
-        
+
         if($request['slgrade']==''){
             $book->slgrade= 'No';
         }
@@ -49,42 +49,42 @@ class SlabbedController extends Controller
         }
         else
         {
-            $book->cgcdes=$request['cgcdes']; 
+            $book->cgcdes=$request['cgcdes'];
         }
         if($request['pgxdes']==''){
             $book->pgxdes='No';
         }
         else
         {
-            $book->pgxdes=$request['pgxdes']; 
+            $book->pgxdes=$request['pgxdes'];
         }
         if($request['slsignature']==''){
             $book->slsignature='No';
         }
         else
         {
-            $book->slsignature=$request['slsignature']; 
+            $book->slsignature=$request['slsignature'];
         }
         if($request['slrestoration']==''){
             $book->slrestoration='No';
         }
         else
         {
-            $book->slrestoration=$request['slrestoration']; 
+            $book->slrestoration=$request['slrestoration'];
         }
         if($request['certificate']==''){
             $book->certificate=122;
         }
         else
         {
-            $book->certificate=$request['certificate']; 
+            $book->certificate=$request['certificate'];
         }
         $book->save();
-        return View('page3');
+        return View('backend.customProducts.page3');
        // $a=5;
         // $book= new Slabbed();
         // $book->slgrade= $request['slgrade'];
-        
+
         // $book->cgcdes=$a;
 
         // $book->cbcsdes= $request['cbcsdes'];

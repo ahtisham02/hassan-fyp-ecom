@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\Backend\CustomProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -138,46 +139,21 @@ Route::group(['prefix' => 'seller', 'namespace' => 'Backend', 'as' => 'seller.']
             Route::get('customer_report_list', 'ReportController@customerReportList')->name('customer_report.list');
         });
 
-        Route::get('/create-custom-product','\App\Http\Controllers\Backend\CustomProductController@index')->name('products.create-custom-product');
-        Route::post('/search-custom-product','\App\Http\Controllers\GcdBrndController@store')->name('search-custom-product');
-        Route::POST('/pgo','\App\Http\Controllers\PageoController@store')->name('pgo');
+        Route::get('/create-custom-product','CustomProductController@index')->name('products.create-custom-product');
+        Route::post('/search-custom-product','CustomProductController@store')->name('search-custom-product');
+        Route::get('/pag1/{id}','CustomProductController@show')->name('pag1');
         Route::POST('/raw','\App\Http\Controllers\RawController@store')->name('raw');
         Route::POST('/slab','\App\Http\Controllers\SlabbedController@store')->name('slab');
+        // Route::post('/search-custom-product','\App\Http\Controllers\GcdBrndController@store')->name('search-custom-product');
+        Route::POST('/pgo','\App\Http\Controllers\PageoController@store')->name('pgo');
+        // Route::POST('/raw','\App\Http\Controllers\RawController@store')->name('raw');
+        // Route::POST('/slab','\App\Http\Controllers\SlabbedController@store')->name('slab');
         Route::POST('/pageth','\App\Http\Controllers\PagethController@store')->name('pageth');
         Route::POST('/pagefo','\App\Http\Controllers\PagefoController@store')->name('pagefo');
-        Route::POST('/pag1/{id}','\App\Http\Controllers\PageoController@show')->name('pag1');
+        // Route::POST('/pag1/{id}','\App\Http\Controllers\PageoController@show')->name('pag1');
         Route::POST('/pag1nn/{id}','\App\Http\Controllers\PageoController@create')->name('pag1nn');
         Route::POST('/pag1sbooks/{id}','\App\Http\Controllers\PageoController@update')->name('pag1sbooks');
         Route::POST('/test','\App\Http\Controllers\PageoController@edit')->name('test');
     });
 });
 
-/**
- * @return void
- */
-
-/* clear all cache */
-Route::get('/clear-all', function () {
-    Artisan::call('optimize:clear');
-    echo Artisan::output();
-});
-/* migration */
-Route::get('/migrate',function(){
-    Artisan::call('migrate');
-    echo Artisan::output();
-});
-
-/* create symbolic link */
-Route::get('/symlink', function () {
-    Artisan::call('storage:link');
-    echo Artisan::output();
-});
-/* clear view cache */
-Route::get('/clear-view-cache', function () {
-    Artisan::call('view:clear');
-    return 'View Cache Cleared';
-});
-
-Route::get('/phpinfo', function () {
-    phpinfo();
-});

@@ -48,7 +48,7 @@ class PagefoController extends Controller
         $book= new Pagefo();
         $book->title= $request['title'];
         $book->price= $request['price'];
-        $book->shopname= "Demo Shop";
+        $book->shopname= Auth::user()->company_name;
         $book->firstname= Auth::user()->first_name;
         $book->lastname= Auth::user()->last_name;
         $book->email= Auth::user()->email;
@@ -80,6 +80,8 @@ class PagefoController extends Controller
 
         $product = Product::findOrFail(\Session::get('custom_product_id'));
         $product->unit_price = $request->price;
+        $product->category_id = $request->category_id;
+        $product->brand_id = $request->brand_id;
         $product->save();
 
         $productDetail = new ProductDetail;

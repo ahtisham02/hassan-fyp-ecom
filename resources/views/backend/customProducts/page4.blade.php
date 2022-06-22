@@ -18,9 +18,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-12">
-                            <div class="css-1woo9m2 elcnykr0">
-                                <form action="/seller/pagefo" method="post" novalidate="">
-                                    @csrf
+                            <div class="card">
+                                <div class="card-body">
                                     <nav class="css-5lb5gz e10zhxd00">
                                         <ul>
                                             <li class="completed"><button type="button">
@@ -45,44 +44,41 @@
                                                 </button></li>
                                         </ul>
                                     </nav>
-                                    <section class="css-1ht8wkd e4nqznn0">
-                                        <header>
-                                            <h2><span class="step-number">Step 4</span>Add the final touches</h2>
-                                        </header>
-                                        <section class="  css-145wmm4 e151ajeo0">
-                                            <fieldset>
-                                                <legend>
-                                                    <div class="bg"></div>
-                                                    <div class="text">Listing details</div>
-                                                </legend>
-                                                <div class="css-3yfs4a e1h61o6v0"><label class="">
-                                                        <div class="label-row">Give your listing a title<small class="char-count">0 /
-                                                                100</small></div>
-                                                        <div class="input-wrapper   "><input name="title" class=" input-text"
-                                                                placeholder="Create a title for your listing" value=""></div>
-                                                    </label></div>
-                                                <div class="css-3yfs4a e1h61o6v0"><label class="">
-                                                        <div class="label-row">How much would you like to sell your comic for?</div>
-                                                        <div class="input-wrapper has-prefix  ">
-                                                            <div class="affix prefix">$</div><input name="price" type="text"
-                                                                inputmode="decimal" pattern="[0-9]*" class="size-xs input-number"
-                                                                placeholder="USD" value="">
-                                                    </label></div>
-                                            </fieldset>
-                                            <aside class="">This is what buyers will see in searches and on your listing page.</aside>
-                                        </section>
-                                        <footer>
-                                            <p class="encouragement">You are a champ.</p>
-                                            <div class="cta-button main css-1kkss9a eiygp9v0">
-                                                <button type="submit" class="inner-element">Save
-                                                    &amp; review final listing</button>
+
+                                    <div class="col-lg-6 col-md-6 col-12">
+                                        <form action="{{ url('/seller/pagefo') }}" method="post" novalidate="">
+                                            @csrf
+                                            <h4>Listing details</h4>
+                                            <div class="form-group">
+                                                <label for="">Give your listing a title</label>
+                                                <input type="text" name="title" class="form-control" required>
                                             </div>
-                                            <div class="cta-button secondary css-1kkss9a eiygp9v0">
-                                                <button type="button" class="inner-element">Go back to photos</button>
+                                            <div class="form-group">
+                                                <label for="">How much would you like to sell your comic for?</label>
+                                                <input type="number" name="price" min="1" class="form-control" required>
                                             </div>
-                                        </footer>
-                                    </section>
-                                </form>
+                                            <div class="form-group">
+                                                <label for="">Category</label>
+                                                <select name="category_id" class="form-control" required>
+                                                    @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">Brand</label>
+                                                <select name="brand_id" class="form-control" required>
+                                                    @foreach($brands as $brand)
+                                                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <button type="submit" class="btn btn-success text-white mt-3">
+                                                Publish Now
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

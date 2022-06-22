@@ -2,7 +2,7 @@
 <nav class="side-bar no-print">
     <div class="side-bar-logo">
         <a href="{{route('seller.home')}}">
-            <img src="@if(config('app.backend_logo')){{asset(config('app.backend_logo'))}}@endif" alt="logo">
+            <img src="@if(config('app.backend_logo')){{asset(config('app.backend_logo'))}}@endif" class="text-center mx-auto d-block" alt="logo">
         </a>
         <button class="close-btn"></button>
     </div>
@@ -141,7 +141,7 @@
                                                             d="M6.72817 14.531L5.11108 13.4121L3.73112 13.5312V8.01856L0 6.125V18.5911L10.5713 24.1705V11.4875L6.75916 9.55463L6.72817 14.531Z"/>
                                 </svg>
                     </span>
-                            <span class="title">{{ __('Product Management') }}</span>
+                            <span class="title">{{ __('Book Management') }}</span>
                             <span class="arrow">
                                 <svg viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="1.47082" y1="2" x2="6.32702" y2="6.8562" stroke-linecap="round"/>
@@ -156,18 +156,14 @@
                             @if(auth()->user()->can('browse_products') || auth()->user()->hasRole('super-admin'))
                                 <li>
                                     <a class="@if(Request::is('seller/products','seller/products/*/edit'))active @endif"
-                                       href="{{route('seller.products.index')}}">{{ __('All Product') }}
+                                       href="{{route('seller.products.index')}}">{{ __('Listing') }}
                                     </a>
                                 </li>
                             @endif
                             @if(auth()->user()->can('create_products') || auth()->user()->hasRole('super-admin'))
                             <li>
-                                <a class="@if(Request::is('seller/products/create'))active @endif"
-                                   href="{{route('seller.products.create')}}">{{__('Add Product')}}</a>
-                            </li>
-                            <li>
                                 <a class="@if(Request::is('seller/products/create-custom-product'))active @endif"
-                                   href="{{route('seller.products.create-custom-product')}}">{{__('Add Custom Product')}}</a>
+                                   href="{{route('seller.products.create-custom-product')}}">{{__('Add Book')}}</a>
                             </li>
                             @endif
                             @if(auth()->user()->can('browse_categories') || auth()->user()->hasRole('super-admin'))

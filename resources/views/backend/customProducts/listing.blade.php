@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title','Search Products - ')
+@section('title','Search Books - ')
 @section('content')
     <div class="content-body">
         <div class="tab-content" id="nav-tabContent">
@@ -16,10 +16,7 @@
                                 <img src="{{ asset('uploads/xman.jpg') }}" class="img-fluid">
                                 <h4 class="mt-1">{{$book->title}}</h4>
                                 <p>{{$book->created}}</p>
-                                <form action="/seller/pag1/{{$book->id}}" method="POST">
-                                    @csrf
-                                    <button type="submit" class="btn btn-success text-white col-md-12">Select</button>
-                                </form>
+                                <a href="{{ url('/seller/pag1/'.$book->id) }}" class="btn btn-success text-white col-md-12">Select</a>
                             </div>
                         </div>
                     </div>
