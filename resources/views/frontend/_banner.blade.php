@@ -2,11 +2,7 @@
 <section class="banner">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2">
-                <div class="side-mega-manu">
-                </div>
-            </div>
-            <div class="col-lg-7">
+            <div class="col-lg-12">
                 <div class="swiper banner-slider">
                     <div class="swiper-wrapper">
                         @foreach($banners as $banner)
@@ -24,28 +20,6 @@
                         @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="banner-add">
-                    <ul>
-                        @foreach($bannerAds as $promotion)
-                            <li>
-                                <div class="banner-add-wrapper">
-                                    <a href="{{ route('product',$promotion->product->slug) }}" class="banner-add-thumb">
-                                        <img src="{{ asset('uploads/products/galleries') }}/{{ $promotion->product->images->first()->image }}" alt="{{ $promotion->product->name }}">
-                                    </a>
-                                    <div class="banner-add-content">
-                                        <a href="{{ route('product',$promotion->product->slug) }}"><span>{{ $promotion->product->name }}</span></a>
-                                        <h5><a href="{{ route('product',$promotion->product->slug) }}">{{ $promotion->title }}</a></h5>
-                                        <div class="star-rating">
-                                            <div class="rateit" data-rateit-value="{{ productRating($promotion->product_id) }}" data-rateit-ispreset="true" data-rateit-readonly="true"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
                 </div>
             </div>
         </div>

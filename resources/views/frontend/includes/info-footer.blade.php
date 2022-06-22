@@ -2,7 +2,7 @@
 <div class="info-footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 col-lg-5">
+            <div class="col-md-6 col-lg-6">
                 <div class="footer-left">
                     <h6>{{ __('About us') }}</h6>
                     <p>{{ maanAppearance('about_us') }}</p>
@@ -22,9 +22,9 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-7 col-md-8">
+            <div class="col-lg-6 col-md-6">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <h6>{{ __('Information') }}</h6>
                         <ul>
                             @foreach(maanMenus(2) as $menu)
@@ -32,28 +32,13 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <h6>{{ __('Returns') }}</h6>
                         <ul>
                             @foreach(maanMenus(3) as $menu)
                                 <li><a href="{{ url('page',$menu->url) }}" target="{{ $menu->target }}">{{ $menu->name }}</a></li>
                             @endforeach
                         </ul>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="footer-right">
-                            <h6>{{ __('Get In Touch') }}</h6>
-                            <div class="payment-gateway">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <a href="#"><img src="{{ asset('frontend/img/playstore.png') }}" alt="img"></a>
-                                    </div>
-                                    <div class="col-12">
-                                        <a href="#"><img src="{{ asset('frontend/img/apple.png') }}" alt="img"></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
