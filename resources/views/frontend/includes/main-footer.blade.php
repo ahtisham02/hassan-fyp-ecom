@@ -7,19 +7,6 @@
                     <p>{{ __('Copyright © 2022, All Right Reserved') }}</p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <ul class="main-footer-card">
-                    <li>
-                        <a href="#"><img src="{{ asset('uploads/3.png') }}" alt="img"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="{{ asset('uploads/1.png') }}" alt="img"></a>
-                    </li>
-                    <li>
-                        <a href="#"><img src="{{ asset('uploads/2.png') }}" alt="img"></a>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
     <div class="back-to-top">

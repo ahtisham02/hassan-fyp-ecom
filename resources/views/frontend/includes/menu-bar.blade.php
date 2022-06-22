@@ -45,19 +45,17 @@
                     </button>
                     <ul>
                         <li>
-                            <a href="{{ route('frontend.best-selling') }}" class="{{ isActiveMenu('best-selling') }}">{{ __('Best Selling')}}</a>
+                            <a href={{ url('/') }}" class="">{{ __('Home')}}</a>
                         </li>
                         <li>
-                            <a href="{{ route('frontend.new-arrivals') }}" class="{{ isActiveMenu('new-arrivals') }}">{{ __('New Arrivals') }}</a>
-                        </li>
-                        <li>
-                            <a href="{{ route('frontend.trends') }}" class="{{ isActiveMenu('trends') }}">{{ __('Trends') }}</a>
+                            <a href="{{ url('shop') }}" class="{{ isActiveMenu('shop') }}">{{ __('All Shop') }}</a>
                         </li>
                         <li>
                             <a href="{{ route('frontend.brands') }}" class="{{ isActiveMenu('brands') }}">{{ __('All Brand') }}</a>
                         </li>
+
                         <li>
-                            <a href="{{ url('shop') }}" class="{{ isActiveMenu('shop') }}">{{ __('All Shop') }}</a>
+                            <a href="{{ url('/page/about-us') }}" class="">{{ __('About us') }}</a>
                         </li>
                     </ul>
                 </nav>

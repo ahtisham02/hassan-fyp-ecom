@@ -5,7 +5,6 @@
 @endpush
 @section('content')
     <div class="content-body">
-    @include('productmanagement::includes.product_management')
         <!-- Tab Content Start -->
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="brand" role="tabpanel" aria-labelledby="brand-tab">

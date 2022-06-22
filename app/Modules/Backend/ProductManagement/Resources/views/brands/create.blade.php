@@ -2,7 +2,6 @@
 @section('title','Brands - ')
 @section('content')
     <div class="content-body">
-    @include('productmanagement::includes.product_management')
         <!-- Tab Content Start -->
         <div class="tab-content" id="nav-tabContent">
             <div class="tab-pane fade show active" id="add-brand" role="tabpanel" aria-labelledby="add-brand-tab">
