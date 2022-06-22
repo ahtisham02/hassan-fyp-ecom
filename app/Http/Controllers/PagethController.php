@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pageth;
 use Illuminate\Http\Request;
 use App\Models\Backend\Product;
+use App\Modules\Backend\ProductManagement\Entities\Brand;
+use App\Modules\Backend\ProductManagement\Entities\Category;
 use Illuminate\Support\Facades\Storage;
 use App\Modules\Backend\ProductManagement\Entities\ProductImage;
 
@@ -40,23 +42,23 @@ class PagethController extends Controller
     {
         // dd($request->all(s));
         // dd(\Session::get('custom_product_id'));
-        if(!empty($request->path))
-        {
-            $product = Product::findOrFail(\Session::get('custom_product_id'));
-
-            $image_path = Storage::putFile('products/galleries', $request->path);
-            $pattern = "/products\/galleries\//";
-            $image_path = preg_replace($pattern, '', $image_path);
-            $image_data['image'] = $image_path;
-            // $product->images()->create($image_data);
-            $image_data['product_id'] = $product->id;
-            ProductImage::create($image_data);
-        }
+        $product = Product::findOrFail(\Session::get('custom_product_id'));
+        $image = $request->path;
+        $fileName = $image->getClientOriginalName();
+        $getFileExt   = $image->getClientOriginalExtension();
+        $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+        $destinationPath = public_path().'/uploads/products/galleries/' ;
+        $image->move($destinationPath,$fileNameNew);
+        $image_data['image'] = $fileNameNew;
+        $image_data['product_id'] = $product->id;
+        ProductImage::create($image_data);
 
         $book= new Pageth();
-        $book->path= $request['path'];
+        $book->path= $fileNameNew;
         $book->save();
-        return View('backend.customProducts.page4');
+        $categories = Category::where('is_active','1')->get();
+        $brands = Brand::where('is_active','1')->get();
+        return View('backend.customProducts.page4')->with(compact('categories','brands'));
     }
 
     /**

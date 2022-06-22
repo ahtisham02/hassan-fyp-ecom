@@ -6,7 +6,7 @@
             <div class="tab-pane fade show active" id="create-product_review" role="tabpanel"
                  aria-labelledby="create-product_review-tab">
                 <div class="container content-title">
-                    <h4>{{__('Custom Products')}}</h4>
+                    <h4>{{__('Book')}}</h4>
                 </div>
                 <div class="container">
                     <div class="row">
