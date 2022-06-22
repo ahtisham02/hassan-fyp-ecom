@@ -156,7 +156,7 @@
                             @if(auth()->user()->can('browse_products') || auth()->user()->hasRole('super-admin'))
                                 <li>
                                     <a class="@if(Request::is('seller/products','seller/products/*/edit'))active @endif"
-                                       href="{{route('seller.products.index')}}">{{ __('Listing') }}
+                                       href="{{route('seller.products.index')}}">{{ __('All Comic Book') }}
                                     </a>
                                 </li>
                             @endif
