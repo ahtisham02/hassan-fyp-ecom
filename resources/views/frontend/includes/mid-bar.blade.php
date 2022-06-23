@@ -17,7 +17,10 @@
                     </form>
                 </div>
             </div>
-            <div class="col-7 col-sm-9 col-lg-3">
+            <div class="col-md-1">
+                <a href="{{ url('/seller/login') }}">Seller</a>
+            </div>
+            <div class="col-7 col-sm-9 col-lg-2">
                 <div class="mair-right">
                     <ul>
                         <li>
