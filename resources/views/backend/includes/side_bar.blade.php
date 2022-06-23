@@ -151,7 +151,7 @@
                                         d="M6.72817 14.531L5.11108 13.4121L3.73112 13.5312V8.01856L0 6.125V18.5911L10.5713 24.1705V11.4875L6.75916 9.55463L6.72817 14.531Z" />
                                 </svg>
                             </span>
-                            <span class="title">{{ __('Product Management') }}</span>
+                            <span class="title">{{ __('Book Management') }}</span>
                             <span class="arrow">
                                 <svg viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
                                     <line x1="1.47082" y1="2" x2="6.32702" y2="6.8562" stroke-linecap="round" />
@@ -236,7 +236,7 @@
                                 auth()->user()->hasRole('super-admin'))
                                 <li>
                                     <a class="@if (Request::is('admin/promotional_products')) active @endif"
-                                        href="{{ route('backend.promotional_products.index') }}">{{ __('Promotional Product') }}
+                                        href="{{ route('backend.promotional_products.index') }}">{{ __('Promotional Book') }}
                                     </a>
                                 </li>
                             @endif
@@ -245,7 +245,7 @@
                                 <li>
                                     <a class="@if (Request::is('admin/promotional_products/create')) active @endif"
                                         href="{{ route('backend.promotional_products.create') }}">
-                                        {{ __('Add Products') }} </a>
+                                        {{ __('Add Books') }} </a>
                                 </li>
                             @endif
                         </ul>
@@ -305,22 +305,6 @@
                                     </a>
                                 </li>
                             @endif
-                            @if (auth()->user()->can('browse_suspended_customers') ||
-                                auth()->user()->hasRole('super-admin'))
-                                {{--  <li>
-                                    <a class="@if (Request::is('admin/suspended_customers', 'seller/suspended_customers')) active @endif"
-                                        href="{{ route('backend.customers.suspended') }}">{{ __('Suspended Customer') }}
-                                    </a>
-                                </li>  --}}
-                            @endif
-                            @if (auth()->user()->can('browse_email_subscriber') ||
-                                auth()->user()->hasRole('super-admin'))
-                                {{--  <li>
-                                    <a class="@if (Request::is('admin/email_subscriber', 'seller/email_subscriber')) active @endif"
-                                        href="{{ route('backend.email_subscriber') }}">{{ __('Email Subscriber') }}
-                                    </a>
-                                </li>  --}}
-                            @endif
 
                         </ul>
                         <!-- Sub Manu End -->
@@ -369,7 +353,7 @@
             @endif
             @if (auth()->user()->can('browse_content_management') ||
                 auth()->user()->hasRole('super-admin'))
-                {{--  <li class="@if (Request::is('admin/banners', 'admin/banners/*', 'admin/product_review', 'admin/product_review/*')) active @endif">
+                <li class="@if (Request::is('admin/banners', 'admin/banners/*', 'admin/product_review', 'admin/product_review/*')) active @endif">
                     <a href="#"><span class="icon"><svg viewBox="0 0 23 21"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path d="M19.013 10.4602H20.3182V3.9342H15.75V5.23941H19.013V10.4602Z" />
@@ -397,54 +381,12 @@
                         </li>
                         <li>
                             <a class="@if (Request::is('admin/product_review')) active @endif"
-                                href="{{ route('backend.product_review.index') }}">{{ __('Product Review') }}
+                                href="{{ route('backend.product_review.index') }}">{{ __('Review') }}
                             </a>
                         </li>
                     </ul>
                     <!-- Sub Manu End -->
-                </li>  --}}
-            @endif
-            @if (auth()->user()->can('browse_faq_manager') ||
-                auth()->user()->hasRole('super-admin'))
-                {{--  <li class="@if (Request::is('admin/faq_category', 'admin/faq_category/*', 'admin/faq_subcategory', 'admin/faq_subcategory/*', 'admin/faq_content', 'admin/faq_content/*')) active @endif">
-                    <a href="#"><span class="icon"><svg viewBox="0 0 22 23"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0)">
-                                    <path
-                                        d="M22.0006 15.1383C22.0006 12.4082 20.4344 9.97179 18.0887 8.78662C18.0159 14.0211 13.7721 18.2649 8.5376 18.3378C9.72276 20.6834 12.1592 22.2496 14.8893 22.2496C16.1692 22.2496 17.414 21.9087 18.5077 21.261L21.9695 22.2186L21.012 18.7567C21.6597 17.663 22.0006 16.4183 22.0006 15.1383Z" />
-                                    <path
-                                        d="M16.8008 8.65039C16.8008 4.01833 13.0325 0.25 8.40039 0.25C3.76833 0.25 0 4.01833 0 8.65039C0 10.16 0.401825 11.6298 1.16486 12.9202L0.0308838 17.0197L4.13054 15.8859C5.42094 16.649 6.89078 17.0508 8.40039 17.0508C13.0325 17.0508 16.8008 13.2825 16.8008 8.65039ZM7.11133 6.69531H5.82227C5.82227 5.27365 6.97873 4.11719 8.40039 4.11719C9.82205 4.11719 10.9785 5.27365 10.9785 6.69531C10.9785 7.41689 10.673 8.11043 10.1401 8.59785L9.04492 9.60023V10.6055H7.75586V9.03258L9.26984 7.64684C9.54041 7.39926 9.68945 7.06139 9.68945 6.69531C9.68945 5.98448 9.11122 5.40625 8.40039 5.40625C7.68956 5.40625 7.11133 5.98448 7.11133 6.69531ZM7.75586 11.8945H9.04492V13.1836H7.75586V11.8945Z" />
-                                </g>
-                            </svg>
-                        </span>
-                        <span class="title">{{ __('FAQ Manager') }}</span>
-                        <span class="arrow"><svg viewBox="0 0 13 8" xmlns="http://www.w3.org/2000/svg">
-                                <line x1="1.47082" y1="2" x2="6.32702" y2="6.8562" stroke-linecap="round" />
-                                <line x1="0.75" y1="-0.75" x2="7.61771" y2="-0.75"
-                                    transform="matrix(-0.707107 0.707107 0.707107 0.707107 12.3281 2)"
-                                    stroke-linecap="round" />
-                            </svg></span>
-                    </a>
-                    <!-- Sub Manu Start -->
-                    <ul>
-                        <li>
-                            <a class="@if (Request::is('admin/faq_category')) active @endif"
-                                href="{{ route('backend.faq_category.index') }}">{{ __('FAQ Category') }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="@if (Request::is('admin/faq_subcategory')) active @endif"
-                                href="{{ route('backend.faq_subcategory.index') }}">{{ __('FAQ SubCategory') }}
-                            </a>
-                        </li>
-                        <li>
-                            <a class="@if (Request::is('admin/faq_content', 'admin/faq_content/*')) active @endif"
-                                href="{{ route('backend.faq_content.index') }}">{{ __('FAQ Content') }}
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- Sub Manu End -->
-                </li>  --}}
+                </li>
             @endif
             @if (auth()->user()->can('browse_reports') ||
                 auth()->user()->hasRole('super-admin'))

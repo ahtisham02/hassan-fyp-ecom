@@ -198,7 +198,12 @@
                     </ul>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                            {!! $product->description ?? 'No Description Available' !!}
+                            {!! $product->description !!}
+                            @if(!empty($productBookDetail))
+                            <p>Genre: {{ $productBookDetail->genre }}</p>
+                            <p>Script: {{ $productBookDetail->script }}</p>
+                            <p>Characters: {{ $productBookDetail->characters }}</p>
+                            @endif
                         </div>
                         <div class="tab-pane fade" id="specifications" role="tabpanel" aria-labelledby="specifications-tab">
                             @if($product->specification)

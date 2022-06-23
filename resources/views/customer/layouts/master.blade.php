@@ -59,7 +59,6 @@
     <!-- Main Header Start -->
     <div class="main-header">
         @include('customer.includes.mid-bar')
-        @include('customer.includes.menu-bar')
     </div>
     <!-- Main Header End -->
     <div class="mybazar-customer-dashboard">

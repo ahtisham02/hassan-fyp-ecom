@@ -118,7 +118,7 @@ function currencies(): Collection
  */
 function userCurrency($key)
 {
-    $currency = Currency::where('id','112')->first();
+    $currency = Currency::where('id','141')->first();
         $data = [
             'id' => $currency->id,
             'symbol' => $currency->symbol,
