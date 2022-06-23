@@ -17,7 +17,6 @@ use App\Http\Controllers\Backend\CustomProductController;
 
 
 /*  route */
-
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'backend.'], function () {
 // Authentication Routes...
     Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
@@ -115,6 +114,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend', 'as' => 'backend.']
 });
 /* seller route */
 Route::group(['prefix' => 'seller', 'namespace' => 'Backend', 'as' => 'seller.'], function () {
+    Route::get('register','Auth\SellerLoginController@showRegistrationForm')->name('register');
+    Route::post('register','Auth\SellerLoginController@showRegistrationForm')->name('register');
     /* seller authentication */
     Route::get('login', 'Auth\SellerLoginController@showLoginForm')->name('login');
     Route::post('login', 'Auth\SellerLoginController@login');
