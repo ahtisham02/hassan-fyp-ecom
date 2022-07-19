@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::get('/',[FrontController::class,'index']);
 
-
 /** Pages Routes */
 Route::get('brand/{slug}',[FrontController::class,'brand'])->name('frontend.brand');
 Route::get('category/{slug}',[FrontController::class,'category'])->name('category');

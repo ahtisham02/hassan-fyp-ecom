@@ -26,6 +26,11 @@
             </div>
             <div class="login-body">
                 <h2> @if(config('app.name')){{config('app.name')}} @endif {{__('Login Panel')}}</h2>
+                @if (session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
                 <form name="LoginForm" id="LoginForm" action="{{url('seller/login')}}" method="post">
                     @csrf
                     <div class="input-group">
@@ -59,7 +64,7 @@
                     <a href="{{ route('seller.password.request') }}">
                         <span><img src="{{URL::to('/backend')}}/img/icons/lock1.svg" alt=""></span>{{__('Forgot Password?')}}</a>
                     <span>
-                        <a href="{{url('/')}}"><span><img src="{{URL::to('/backend')}}/img/icons/global.svg" alt=""></span>{{__('Frontend')}}</a>
+                        <a href="{{url('/seller/register')}}"><span><img src="{{URL::to('/backend')}}/img/icons/global.svg" alt=""></span>{{__('Register')}}</a>
                     </span>
                 </div>
             </div>

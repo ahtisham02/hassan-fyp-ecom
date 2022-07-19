@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Backend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Frontend\Seller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class SellerLoginController extends Controller
 {
@@ -47,6 +49,51 @@ class SellerLoginController extends Controller
     public function showLoginForm(): \Illuminate\View\View
     {
         return view('backend.pages.auth.seller.login');
+    }
+
+    public function showRegistrationForm(Request $request)
+    {
+        if($request->isMethod('POST')){
+            $validate = Validator::make($request->all(),[
+                'email' => 'required|email|unique:sellers',
+                'first_name' => 'required|string',
+                'last_name' => 'required|string',
+                'address' => 'required|string',
+                'mobile' => 'required|string',
+                'city' => 'required|string',
+                'gender' => 'required',
+                'password' => 'required|min:6|confirmed',
+                'company_name' => 'required|string',
+                'business_address' => 'required|string',
+                'business_email' => 'required|email',
+                'business_number' => 'required|string'
+            ]);
+
+            if($validate->fails()){
+                return redirect()->back()->withErrors($validate)->withInput();
+            }
+
+            $data = $request->all();
+            $data['password'] = bcrypt($data['password']);
+            $seller = new Seller();
+            $seller->id = rand(1,100);
+            $seller->first_name = $data['first_name'];
+            $seller->last_name = $data['last_name'];
+            $seller->address = $data['address'];
+            $seller->mobile = $data['mobile'];
+            $seller->city = $data['city'];
+            $seller->company_name = $data['company_name'];
+            $seller->business_address = $data['business_address'];
+            $seller->business_email = $data['business_email'];
+            $seller->business_mobile = $data['business_number'];
+            $seller->password = $data['password'];
+            $seller->email = $data['email'];
+            $seller->is_approve = 0;
+            $seller->gender = $data['gender'];
+            $seller->save();
+            return redirect()->to(url('/seller/login'))->with('status','Registration Successful. Please wait for approval');
+        }
+        return view('backend.pages.auth.seller.register');
     }
 
     /**
