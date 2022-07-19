@@ -163,10 +163,17 @@ class BrandController extends Controller
             ]);
             $image = $request->file('image');
             if ($image) {
-                $path = Storage::putFile('brands/120x80', $image);
-                $pattern = "/brands\/120x80\//";
-                $path = preg_replace($pattern, '', $path);
-                $data['image'] = $path;
+                // uploads/brands/120x80/
+                // $path = Storage::putFile('brands/120x80', $image);
+                // $pattern = "/brands\/120x80\//";
+                // $path = preg_replace($pattern, '', $path);
+                // $data['image'] = $path;
+                $fileName = $image->getClientOriginalName() ;
+                    $getFileExt   = $image->getClientOriginalExtension();
+                    $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                    $destinationPath = public_path().'/uploads/brands/120x80/' ;
+                    $image->move($destinationPath,$fileNameNew);
+                    $data['image'] = $fileNameNew;
             }
             $data['is_active'] = 1;
             $brand = Brand::create($data);
@@ -249,13 +256,12 @@ class BrandController extends Controller
             ]);
             $image = $request->file('image');
             if ($image) {
-                $path = Storage::putFile('brands/120x80', $image);
-                if (file_exists(storage_path('app/public/brands/120x80/') . $brand->image)) {
-                    Storage::delete('brands/120x80/' . $brand->image);
-                }
-                $pattern = "/brands\/120x80\//";
-                $path = preg_replace($pattern, '', $path);
-                $data['image'] = $path;
+                $fileName = $image->getClientOriginalName() ;
+                $getFileExt   = $image->getClientOriginalExtension();
+                $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                $destinationPath = public_path().'/uploads/brands/120x80/' ;
+                $image->move($destinationPath,$fileNameNew);
+                $data['image'] = $fileNameNew;
             }
             $brand = $brand->update($data);
             if ($brand) {

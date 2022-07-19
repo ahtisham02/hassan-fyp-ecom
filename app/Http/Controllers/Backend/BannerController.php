@@ -175,10 +175,17 @@ class BannerController extends Controller
                 $data['target'] = '_self';
             $image = $request->file('image');
             if ($image) {
-                $path = Storage::putFile('banners', $image);
-                $pattern = "/banners\//";
-                $path = preg_replace($pattern, '', $path);
-                $data['image'] = $path;
+                // $path = Storage::putFile('banners', $image);
+                // $pattern = "/banners\//";
+                // $path = preg_replace($pattern, '', $path);
+                // $data['image'] = $path;
+
+                $fileName = $image->getClientOriginalName() ;
+                $getFileExt   = $image->getClientOriginalExtension();
+                $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                $destinationPath = public_path().'/uploads/banners/' ;
+                $image->move($destinationPath,$fileNameNew);
+                $data['image'] = $fileNameNew;
             }
 
             $banner = Banner::create($data);
@@ -272,13 +279,12 @@ class BannerController extends Controller
                 );
                 $image = $request->file('image');
                 if ($image) {
-                    $path = Storage::putFile('banners', $image);
-                    $pattern = "/banners\//";
-                    $path = preg_replace($pattern, '', $path);
-                    if (file_exists(storage_path('app/public/banners/') . $banner->image)) {
-                        Storage::delete('banners/' . $banner->image);
-                    }
-                    $data['image'] = $path;
+                    $fileName = $image->getClientOriginalName() ;
+                    $getFileExt   = $image->getClientOriginalExtension();
+                    $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                    $destinationPath = public_path().'/uploads/banners/' ;
+                    $image->move($destinationPath,$fileNameNew);
+                    $data['image'] = $fileNameNew;
                 }
                 $banner->update($data);
                 if (auth('seller')->user())

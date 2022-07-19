@@ -170,21 +170,34 @@ class CategoryController extends Controller
             $banner = $request->file('banner');
             $icon = $request->file('icon');
             if ($banner) {
-                $banner_path = Storage::putFile('categories/200x200', $banner);
-                $pattern = "/categories\/200x200\//";
-                $banner_path = preg_replace($pattern, '', $banner_path);
+                // uploads/categories/32x32/
+                // $banner_path = Storage::putFile('categories/200x200', $banner);
+                // $pattern = "/categories\/200x200\//";
+                // $banner_path = preg_replace($pattern, '', $banner_path);
+                $fileName = $banner->getClientOriginalName() ;
+                    $getFileExt   = $banner->getClientOriginalExtension();
+                    $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                    $destinationPath = public_path().'/uploads/categories/200x200/' ;
+                    $banner->move($destinationPath,$fileNameNew);
+                    $data['banner'] = $fileNameNew;
             } else {
                 $banner_path = 'default_banner.jpg';
             }
-            $data['banner'] = $banner_path;
+            // $data['banner'] = $banner_path;
             if ($icon) {
-                $icon_path = Storage::putFile('categories/32x32', $icon);
-                $pattern = "/categories\/32x32\//";
-                $icon_path = preg_replace($pattern, '', $icon_path);
+                // $icon_path = Storage::putFile('categories/32x32', $icon);
+                // $pattern = "/categories\/32x32\//";
+                // $icon_path = preg_replace($pattern, '', $icon_path);
+                $fileName = $icon->getClientOriginalName() ;
+                    $getFileExt   = $icon->getClientOriginalExtension();
+                    $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                    $destinationPath = public_path().'/uploads/categories/32x32/' ;
+                    $icon->move($destinationPath,$fileNameNew);
+                    $data['icon'] = $fileNameNew;
             } else {
                 $icon_path = 'default_icon.jpg';
             }
-            $data['icon'] = $icon_path;
+            // $data['icon'] = $icon_path;
             $data['is_active'] = 0;
             $data['show_in_home'] = 0;
             $category = Category::create($data);
@@ -273,23 +286,27 @@ class CategoryController extends Controller
             $banner = $request->file('banner');
             $icon = $request->file('icon');
             if ($banner) {
-                $banner_path = Storage::putFile('categories/200x200', $banner);
-                $pattern = "/categories\/200x200\//";
-                $banner_path = preg_replace($pattern, '', $banner_path);
-                if (file_exists(storage_path('app/public/categories/200x200/') . $category->banner)) {
-                    Storage::delete('categories/200x200/' . $category->banner);
-                }
-                $category->banner = $banner_path;
-                $category->save();
+                $fileName = $banner->getClientOriginalName() ;
+                    $getFileExt   = $banner->getClientOriginalExtension();
+                    $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                    $destinationPath = public_path().'/uploads/categories/200x200/' ;
+                    $banner->move($destinationPath,$fileNameNew);
+                    $category->banner = $fileNameNew;
+                    $category->save();
+            } else {
+                $banner_path = 'default_banner.jpg';
             }
             if ($icon) {
-                $icon_path = Storage::putFile('categories/32x32', $icon);
-                $pattern = "/categories\/32x32\//";
-                $icon_path = preg_replace($pattern, '', $icon_path);
-                if (file_exists(storage_path('app/public/categories/32x32/') . $category->icon))
-                    Storage::delete('categories/32x32/' . $category->icon);
-                $category->icon = $icon_path;
-                $category->save();
+
+                $fileName = $icon->getClientOriginalName() ;
+                    $getFileExt   = $icon->getClientOriginalExtension();
+                    $fileNameNew = time().'-'.rand(000,9999).'.'.$getFileExt;
+                    $destinationPath = public_path().'/uploads/categories/32x32/' ;
+                    $icon->move($destinationPath,$fileNameNew);
+                    $category->icon = $fileNameNew;
+                    $category->save();
+            } else {
+                $icon_path = 'default_icon.jpg';
             }
             if ($category) {
                 if (auth('seller')->user())
